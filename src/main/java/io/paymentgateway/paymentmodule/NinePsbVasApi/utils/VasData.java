@@ -6,6 +6,6 @@ import lombok.Data;
 public class VasData {
 
     private String accessToken;
-    private double expiresIn;
+    private int expiresIn;
 
 }
