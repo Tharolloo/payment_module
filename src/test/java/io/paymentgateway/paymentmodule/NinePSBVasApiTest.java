@@ -152,5 +152,17 @@ public class NinePSBVasApiTest {
 
 
     @Test
-    public void check
+    public void checkDataTopUp() {
+
+        testClient.post().uri("http://102.216.128.75:9090/vas/api/v1/topup/data")
+                .header(HttpHeaders.AUTHORIZATION, "Bearer " + "eyJ0eXAiOiJKV1QiLCJrZXlJZCI6InZhc19qd3QiLCJhbGciOiJIUzUxMiJ9.eyJhdXRob3JpdGllcyI6WyJCSUxMU19QQVlNRU5UIiwiVE9QX1VQIl0sInN1YiI6IktBUlJBQk8iLCJpc3MiOiI5cHNiLmNvbS5uZyIsImlhdCI6MTcxNTcwMDQ2OCwianRpIjoiNjJiN2FlNzEtNjIzMC00NDQ0LTgyNDQtNTk1MTA1MjEyODhjIiwiZXhwIjoxNzE1NzA3NjY4fQ.NnBnEO673aXjFJwgnqpct41vl8mjohS_galOsU20NimB19hZ09Wl1TZSjEgFr3uaPRAJr6X9Oe9PNAfqtAc_BQ")
+                .exchange()
+                .expectStatus().isOk()
+                .expectBody()
+                .consumeWith(response -> assertThat(response.getResponseBody()).isNotNull());
+
+    }
+
+    @Test
+    public void check(){}
 }

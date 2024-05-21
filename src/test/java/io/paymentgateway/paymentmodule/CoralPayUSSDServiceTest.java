@@ -60,7 +60,7 @@ public class CoralPayUSSDServiceTest {
         String t = "ds";
         log.info(timeStamp);
         //assertThat(timeStamp).isEqualTo("hg");
-        assertThat(signature).isNotEqualTo(t);
+        assertThat(signature).isEqualTo(t);
 
     }
 
