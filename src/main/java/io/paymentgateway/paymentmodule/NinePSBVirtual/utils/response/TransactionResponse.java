@@ -1,0 +1,10 @@
+package io.paymentgateway.paymentmodule.NinePSBVirtual.utils.response;
+
+import lombok.Data;
+
+@Data
+public class TransactionResponse {
+
+    private String reference;
+
+}
