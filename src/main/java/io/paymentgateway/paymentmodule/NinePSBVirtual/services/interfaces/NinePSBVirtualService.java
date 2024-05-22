@@ -10,4 +10,6 @@ public interface NinePSBVirtualService {
     VirtualAuthenticationResponse authenticate(VirtualAuthenticationRequest request);
 
     DynamicVirtualAccountResponse createDynamic(DynamicVirtualAccountRequest request);
+
+    DynamicVirtualAccountResponse reallocate(DynamicVirtualAccountRequest request);
 }

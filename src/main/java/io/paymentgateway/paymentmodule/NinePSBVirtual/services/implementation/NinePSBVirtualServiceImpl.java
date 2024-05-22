@@ -49,4 +49,18 @@ public class NinePSBVirtualServiceImpl implements NinePSBVirtualService {
                 .body(DynamicVirtualAccountResponse.class);
 
     }
+
+    @Override
+    public DynamicVirtualAccountResponse reallocate(DynamicVirtualAccountRequest request) {
+
+        String value = "eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJuYW1laWQiOiJoMFFxc0pBdlNaUFJpSGVnTHFQVXJMSkhhZE9vdnZvTEtLRWg4T3VNWU5RZmQxMks4VXVmSmRQN3VmWG9rSkwxY0ovcXV4SURhWTVLWHpwZytURlRjOXZPU2lpN0hwaTVpbHJtVndTYVNRZXNRdXVpbjBGVTQvSUM2dHZHbmx5eUg5a3phZ00zUWFQVDZ0RW1wKzk5N1NPdTdPSytqd3dpSk9Jb0Q2ckhaWHc9IiwiaHR0cDovL3NjaGVtYXMueG1sc29hcC5vcmcvd3MvMjAwNS8wNS9pZGVudGl0eS9jbGFpbXMvaGFzaCI6ImM3NjgxZGNhZmI5NzU0NjEyODQyZjc4M2RkZjEyOGJiYzk0ZjJlMTRkZmY4NGE4MWM1MmRjOTZkOWU0YTE5NDJiNTkxN2Y1OGFkYzFiZjk0NTE2MzdjZjg5NmUwNGVkMGQ5YmU2ZDQ5ZWQ3YWZkMmFjMGE3NzgyN2NhMWZiNmZiIiwicm9sZSI6Ik13K29NcWZWaFYzaExWZzBPM1BqWEl0MWRRaS9Bc1NLWUt2a0pVUzVzYTFHVm9kNzVWY3BtbFlON3llMVRReERQUWJ3S0dGTjFVY0VES3FobFB5bVQzeUZvdVJ2QmM4YS83bys0UXlFUHI4Nml4cGU5UDdPVVArcm5aaEhqcHNBZnBRUVhYT040cXNVSTNVZEwyblBTNzJ6RHJjbmRyTXQ2TE5ZMHJtc2Rkb3dXNk1Ia0hDOTc5S2FZSVB5elM4SjYrbVUxQjBOQjllcWxoK3ExVkliUVlHY25LVXJYUzltSEs0NXBCMDdYNzErOEZWUUpTclc0ZGFNMUdzQmluRjJwa0VOcll5dk5FcU5WQ3NUUmFCaVhab2xwQ1FjNXNiRjVaMnZGUHA0WXBRV255eGk2WEZzNWJabmxSY1k5dGNSOGMzVFJpU3lBOVRuK2lQd1RGeEkyMHFrL2RpdENOWmtUNFgvYjQxYk5PVG92NXNvNVR2MkpPVGFkZ3RSN3dnN2llYkV6MDNSQ2RudjR5Qmp2WmYreGYwV1hBK3JqOWlOaUw2OWhyUG9kOE80VE50SFk0Z2haeWxQS2ZrUjd1VWlneGMwaTBJTTNtT25SdW0xWDRrYmFBPT0iLCJuYmYiOjE3MTYzOTQyNzEsImV4cCI6MTcxNjQwMTQ3MSwiaWF0IjoxNzE2Mzk0MjcxLCJpc3MiOiI5UFNCX1NlcnZpY2VfSW50ZXJuYWwiLCJhdWQiOiI5UFNCX1NlcnZpY2VfSW50ZXJuYWwifQ.V5i0tZymFE5XagbqXrW68m1g0nEuTmtc86MaM48I3tnaqXv-edzzCfV24ww_qcNwSkDLjYLkbW1_zRWeA_u_RQ";
+        return this.restClient
+                .post()
+                .uri("https://baastest.9psb.com.ng/iva-api/v1/merchant/virtualaccount/reallocate")
+                .contentType(MediaType.APPLICATION_JSON)
+                .header(HttpHeaders.AUTHORIZATION, value)
+                .body(request)
+                .retrieve()
+                .body(DynamicVirtualAccountResponse.class);
+    }
 }

@@ -12,7 +12,7 @@ import lombok.NoArgsConstructor;
 public class VirtualAccountReq {
 
     private String name;
-    private String type;
-    //private Expiry expiry;
+    private AccountType type;
+    private Expiry expiry;
 
 }

@@ -66,7 +66,7 @@ public class NinePSBVirtualTest {
         VirtualCustomerReq customer = new VirtualCustomerReq();
         VirtualAccountReq account = new VirtualAccountReq();
         account.setName("Amaechi Muonagor");
-        account.setType("DYNAMIC");
+        account.setType(AccountType.DYNAMIC);
 
 //        Expiry expiry = new Expiry();
 //        expiry.setHours(1);
@@ -74,7 +74,101 @@ public class NinePSBVirtualTest {
 //        account.setExpiry(expiry);
 
         TransactionRequest transaction = new TransactionRequest();
-        transaction.setReference("202307014083659123456107");
+        transaction.setReference("202307014083659123456102");
+
+        request.setTransaction(transaction);
+
+        customer.setNumber("5030000013");
+        customer.setBank("9PSB");
+        customer.setAccount(account);
+        request.setCustomer(customer);
+
+        VirtualOrderRequest order = new VirtualOrderRequest();
+
+        order.setCountry("NGA");
+        order.setDescription("Test TRF");
+        order.setAmount(350);
+        order.setCurrency("NGN");
+        order.setAmounttype("ANY");
+
+        request.setOrder(order);
+
+        DynamicVirtualAccountResponse response = virtualService.createDynamic(request);
+
+        assertThat(response.toString()).isNotNull();
+        assertThat(response.getMessage()).isEqualTo("success");
+    }
+
+    @Test
+    public void checkToCreateStaticVirtualAccount() {
+
+        DynamicVirtualAccountRequest request =  new DynamicVirtualAccountRequest();
+
+        BeneficiaryToCreditReq beneficiaryToCredit = new BeneficiaryToCreditReq();
+        beneficiaryToCredit.setAccountnumber("1100000299");
+        beneficiaryToCredit.setBankcode("120001");
+        beneficiaryToCredit.setFeeamount(3.75);
+
+        request.setBeneficiarytocredit(beneficiaryToCredit);
+        VirtualCustomerReq customer = new VirtualCustomerReq();
+        VirtualAccountReq account = new VirtualAccountReq();
+        account.setName("Amaechi Muonagor");
+        account.setType(AccountType.STATIC);
+
+//        Expiry expiry = new Expiry();
+//        expiry.setHours(1);
+//        expiry.setDate("2023-06-11T13:47:31.7993952+01:00\"");
+//        account.setExpiry(expiry);
+
+        TransactionRequest transaction = new TransactionRequest();
+        transaction.setReference("202307014083659123456109");
+
+        request.setTransaction(transaction);
+
+        customer.setNumber("5030000013");
+        customer.setBank("9PSB");
+        customer.setAccount(account);
+        request.setCustomer(customer);
+
+        VirtualOrderRequest order = new VirtualOrderRequest();
+
+        order.setCountry("NGA");
+        order.setDescription("Test TRF");
+        order.setAmount(350);
+        order.setCurrency("NGN");
+        order.setAmounttype("ANY");
+
+        request.setOrder(order);
+
+        DynamicVirtualAccountResponse response = virtualService.createDynamic(request);
+
+        assertThat(response.toString()).isNotNull();
+        assertThat(response.getMessage()).isEqualTo("Success");
+    }
+
+    @Test
+    public void checkToReallocateVirtualAccount() {
+
+        DynamicVirtualAccountRequest request =  new DynamicVirtualAccountRequest();
+
+        BeneficiaryToCreditReq beneficiaryToCredit = new BeneficiaryToCreditReq();
+        beneficiaryToCredit.setAccountnumber("1100000299");
+        beneficiaryToCredit.setBankcode("120001");
+        beneficiaryToCredit.setFeeamount(3.75);
+
+        request.setBeneficiarytocredit(beneficiaryToCredit);
+        VirtualCustomerReq customer = new VirtualCustomerReq();
+        VirtualAccountReq account = new VirtualAccountReq();
+        account.setName("Amaechi Muonagor");
+        account.setType(AccountType.DYNAMIC);
+
+        Expiry expiry = new Expiry();
+        expiry.setHours(1);
+//        expiry.setDate("2023-06-11T13:47:31.7993952+01:00\"");
+        account.setExpiry(expiry);
+
+        TransactionRequest transaction = new TransactionRequest();
+        transaction.setReference("202307014083659123456102");
 
         request.setTransaction(transaction);
 

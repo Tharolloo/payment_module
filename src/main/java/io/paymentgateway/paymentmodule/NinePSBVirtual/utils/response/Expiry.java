@@ -6,6 +6,6 @@ import lombok.Data;
 public class Expiry {
 
     private Integer hours;
-    private String date;
+    //private String date;
 
 }
