@@ -2,6 +2,7 @@ package io.paymentgateway.paymentmodule;
 
 import io.paymentgateway.paymentmodule.FundTransfer9PSB.DTO.request.FT9PSBAuthenticateRequest;
 import io.paymentgateway.paymentmodule.FundTransfer9PSB.DTO.request.FTAccountEnquiryRequest;
+import io.paymentgateway.paymentmodule.FundTransfer9PSB.DTO.request.FTBalanceEnquiryRequest;
 import io.paymentgateway.paymentmodule.FundTransfer9PSB.DTO.request.FundTransferRequest;
 import io.paymentgateway.paymentmodule.FundTransfer9PSB.DTO.response.FT9PSBAuthenticateResponse;
 import io.paymentgateway.paymentmodule.FundTransfer9PSB.DTO.response.FTAccountEnquiryResponse;
@@ -110,6 +111,15 @@ public class FundTransfer9PSBTest {
         FundTransferResponse response = service.transfer(fundTransferRequest);
 
         assertThat(response).isNotEqualTo(null);
+    }
+
+    @Test
+    void checkBalanceEnquiryForFundTransfer() {
+
+        FTBalanceEnquiryRequest balance = new FTBalanceEnquiryRequest();
+
+
+
     }
 
 }

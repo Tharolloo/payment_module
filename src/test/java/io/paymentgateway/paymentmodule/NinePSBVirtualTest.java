@@ -168,7 +168,7 @@ public class NinePSBVirtualTest {
         account.setExpiry(expiry);
 
         TransactionRequest transaction = new TransactionRequest();
-        transaction.setReference("202307014083659123456102");
+        transaction.setReference("202307014083659123456107");
 
         request.setTransaction(transaction);
 
@@ -187,10 +187,12 @@ public class NinePSBVirtualTest {
 
         request.setOrder(order);
 
-        DynamicVirtualAccountResponse response = virtualService.createDynamic(request);
+        DynamicVirtualAccountResponse response = virtualService.reallocate(request);
 
         assertThat(response.toString()).isNotNull();
         assertThat(response.getMessage()).isEqualTo("success");
     }
+
+
 
 }

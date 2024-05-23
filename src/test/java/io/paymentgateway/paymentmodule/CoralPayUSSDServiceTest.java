@@ -56,7 +56,7 @@ public class CoralPayUSSDServiceTest {
     @Test
     void checkToGenerateSignature() {
 
-        String signature = ussdService.generateSignature(merchantId,terminalId,timeStamp,"2391c6ed-038a-43fa-b4c3-03b4a65e8abf");
+        String signature = ussdService.generateSignature(merchantId,terminalId,timeStamp,"398fef61-03d9-4100-a5ca-8de4c3527e51");
         String t = "ds";
         log.info(timeStamp);
         //assertThat(timeStamp).isEqualTo("hg");
