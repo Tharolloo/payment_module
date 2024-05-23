@@ -115,7 +115,7 @@ public class FT9PSBServiceImpl implements FT9PSBService {
         String credential = "eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJuYW1laWQiOiJqRFdNaWhiazgxaG0rRVQweTh6UDdDMkUzYjV4Mzh1ZlQ5cGRhQnZqVHJzZW1VRjA2WVF0VlZqekF1WWZsdS94czNUREhKWm1OZWxzQWlGajJOb2tOeWRxWFZEdXRKa092U1NmdDFySE9VWDJDalY3dzUxQ3NoWkloWThmR1FYR0hSTTY0djVZaHpyM1BRYWtyaDk1ZGJ5UGVyeWV6d2tnR2I4ZnE5SHI5STg9IiwiaHR0cDovL3NjaGVtYXMueG1sc29hcC5vcmcvd3MvMjAwNS8wNS9pZGVudGl0eS9jbGFpbXMvaGFzaCI6IjYyYWFjY2Q4ZTEzNjEzY2M1NDc4N2RmNzE1NmM5ODgwOGJkYmZmMjI3OTM0MGFiN2E5MjYyYjI4YmI4NGI5YmYxNDM3YTJhNmE1NDYzZmIxOTBiNTQwYjAxZDg1OWM3YmNkMjYzZTE4Yjk2NWEyYmMxMDEyNGRiODk2NWVjZWFhIiwicm9sZSI6IldrMHE2RHJpL1V3ZXBlYTZmSFE2RE1oZVNnV3pOQXJHbnoxdksyOTEwakR4cjRCZ3dVZk5mamVFMlE1djJ6V2tlSmQ0eXNESE1nOFBaRHBQSUZsUnl4bnFwMnQ4SFJ0MTBjNXU0blA4NzhJdmJKMGNPRVQxZWVzUTRsS3huSEorU0RHZ1lOM0JGVzJsS2xuY0xnelcyV01Kdk5JZ0VsM2w1bkRXRUVoUVhqRlEvelRNM3lZdkhDNWVIRmxkeVNsZHVGbzVaL3k2TkF5bGdBV0VHT0h2Wm9DaFh2RnBtWnRyVkdsVHZWUHpYcjNnRjR3WElQdDQ5YzVDV0E1Syt1VFNOVXRMSkZhRzZ1UmNRbzdTelc2ZDd3SlRwMGdMN1JaU1hvWnlUNUUzWXVrL01RNGRuSFRzOUpob3AyUWIyM1RPRFhxdjdnaEFRYmM5Z0NDMWpleDBlZz09IiwibmJmIjoxNzE2NDM5MzY3LCJleHAiOjE3MTY0NDY1NjcsImlhdCI6MTcxNjQzOTM2NywiaXNzIjoiOVBTQl9TZXJ2aWNlX0ludGVybmFsIiwiYXVkIjoiOVBTQl9TZXJ2aWNlX0ludGVybmFsIn0.eqFdl_AbxjKsj2OPhFUOiibKQ3-8MnJxryASsw8aIaZOqqlcHlPWLK3WKS30QPr1n5NW-LKDWeOyMv_2GGw2Ww";
         return this.restClient
                 .post()
-                .uri("https://baastest.9psb.com.ng/ipaymw-api/v1/merchant/account/transfer")
+                .uri("https://baastest.9psb.com.ng/ipaymw-api/v1/merchant/account/balanceenquiry")
                 .contentType(MediaType.APPLICATION_JSON)
                 .header(HttpHeaders.AUTHORIZATION, credential)
                 .body(request)

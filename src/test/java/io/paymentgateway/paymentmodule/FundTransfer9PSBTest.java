@@ -6,12 +6,15 @@ import io.paymentgateway.paymentmodule.FundTransfer9PSB.DTO.request.FTBalanceEnq
 import io.paymentgateway.paymentmodule.FundTransfer9PSB.DTO.request.FundTransferRequest;
 import io.paymentgateway.paymentmodule.FundTransfer9PSB.DTO.response.FT9PSBAuthenticateResponse;
 import io.paymentgateway.paymentmodule.FundTransfer9PSB.DTO.response.FTAccountEnquiryResponse;
+import io.paymentgateway.paymentmodule.FundTransfer9PSB.DTO.response.FTBalanceEnquiryResponse;
 import io.paymentgateway.paymentmodule.FundTransfer9PSB.DTO.response.FundTransferResponse;
 import io.paymentgateway.paymentmodule.FundTransfer9PSB.service.FT9PSBService;
+import io.paymentgateway.paymentmodule.FundTransfer9PSB.utils.FTAccountRequest;
 
 import io.paymentgateway.paymentmodule.FundTransfer9PSB.utils.request.*;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.lang3.StringUtils;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -116,7 +119,25 @@ public class FundTransfer9PSBTest {
     @Test
     void checkBalanceEnquiryForFundTransfer() {
 
-        FTBalanceEnquiryRequest balance = new FTBalanceEnquiryRequest();
+        try {
+
+                FTBalanceEnquiryRequest balance = new FTBalanceEnquiryRequest();
+                FTAccountRequest account = new FTAccountRequest();
+                account.setAccountnumber("1100015371");
+                balance.setAccount(account);
+
+                FTBalanceEnquiryResponse response = service.balance(balance);
+
+                assertThat(response.getAccount()).isNotEqualTo(null);
+                assertThat(response.getCode()).isEqualTo("00");
+
+        } catch(RuntimeException e){
+            e.getMessage();
+        }
+    }
+
+    @Test
+    void checkGetBankListIsNotNull() {
 
 
 

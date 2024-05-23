@@ -1,6 +1,5 @@
 package io.paymentgateway.paymentmodule.FundTransfer9PSB.DTO.request;
 
-import io.paymentgateway.paymentmodule.FundTransfer9PSB.utils.FTAccountRequest;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -8,8 +7,8 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class FTBalanceEnquiryRequest {
+public class FTGetBankListReq {
 
-    FTAccountRequest account;
+    private String RequestDateTime;
 
 }
