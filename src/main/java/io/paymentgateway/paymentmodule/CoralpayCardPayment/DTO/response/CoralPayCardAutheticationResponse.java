@@ -7,10 +7,8 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class CoralCardResponse {
+public class CoralPayCardAutheticationResponse {
 
-    private String key;
-    private String token;
-    private String status;
+
 
 }
