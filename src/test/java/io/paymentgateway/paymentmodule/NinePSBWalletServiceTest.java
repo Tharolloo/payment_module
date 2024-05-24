@@ -18,7 +18,9 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.Assert.*;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+
 
 @SpringBootTest
 @Slf4j
@@ -42,7 +44,7 @@ public class NinePSBWalletServiceTest {
     }
 
     @Test
-    void checkNinePSBAuthenticationWithNullRequest() throws PaymentServiceException {
+    void checkNinePSBAuthenticationWithNullRequest() throws PaymentServiceException, NullPointerException {
 
        // assertEquals(null, ninePSBWalletService.authenticate(null));
         assertThrows(PaymentServiceException.class, () -> ninePSBWalletService.authenticate(null));

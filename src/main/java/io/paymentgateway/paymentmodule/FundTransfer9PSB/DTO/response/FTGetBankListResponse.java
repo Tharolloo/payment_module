@@ -10,5 +10,9 @@ import java.util.Vector;
 @AllArgsConstructor
 @NoArgsConstructor
 public class FTGetBankListResponse {
-    Vector<EachBankList> BankList = new Vector<EachBankList>();
+
+    private Vector<EachBankList> BankList = new Vector<EachBankList>();
+    private String code;
+    private String message;
+
 }

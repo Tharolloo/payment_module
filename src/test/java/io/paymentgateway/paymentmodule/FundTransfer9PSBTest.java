@@ -1,13 +1,7 @@
 package io.paymentgateway.paymentmodule;
 
-import io.paymentgateway.paymentmodule.FundTransfer9PSB.DTO.request.FT9PSBAuthenticateRequest;
-import io.paymentgateway.paymentmodule.FundTransfer9PSB.DTO.request.FTAccountEnquiryRequest;
-import io.paymentgateway.paymentmodule.FundTransfer9PSB.DTO.request.FTBalanceEnquiryRequest;
-import io.paymentgateway.paymentmodule.FundTransfer9PSB.DTO.request.FundTransferRequest;
-import io.paymentgateway.paymentmodule.FundTransfer9PSB.DTO.response.FT9PSBAuthenticateResponse;
-import io.paymentgateway.paymentmodule.FundTransfer9PSB.DTO.response.FTAccountEnquiryResponse;
-import io.paymentgateway.paymentmodule.FundTransfer9PSB.DTO.response.FTBalanceEnquiryResponse;
-import io.paymentgateway.paymentmodule.FundTransfer9PSB.DTO.response.FundTransferResponse;
+import io.paymentgateway.paymentmodule.FundTransfer9PSB.DTO.request.*;
+import io.paymentgateway.paymentmodule.FundTransfer9PSB.DTO.response.*;
 import io.paymentgateway.paymentmodule.FundTransfer9PSB.service.FT9PSBService;
 import io.paymentgateway.paymentmodule.FundTransfer9PSB.utils.FTAccountRequest;
 
@@ -139,7 +133,14 @@ public class FundTransfer9PSBTest {
     @Test
     void checkGetBankListIsNotNull() {
 
+        FTGetBankListReq bankList = new FTGetBankListReq();
 
+        bankList.setRequestDateTime("2023-06-27T13:19:30.4518182+01:00");
+
+        FTGetBankListResponse response = service.getbanks(bankList);
+
+        assertThat(response.getBankList()).isNotNull();
+       assertThat(response.getCode()).isEqualTo("96");
 
     }
 

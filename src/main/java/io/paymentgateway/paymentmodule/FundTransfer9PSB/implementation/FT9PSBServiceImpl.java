@@ -1,13 +1,7 @@
 package io.paymentgateway.paymentmodule.FundTransfer9PSB.implementation;
 
-import io.paymentgateway.paymentmodule.FundTransfer9PSB.DTO.request.FT9PSBAuthenticateRequest;
-import io.paymentgateway.paymentmodule.FundTransfer9PSB.DTO.request.FTAccountEnquiryRequest;
-import io.paymentgateway.paymentmodule.FundTransfer9PSB.DTO.request.FTBalanceEnquiryRequest;
-import io.paymentgateway.paymentmodule.FundTransfer9PSB.DTO.request.FundTransferRequest;
-import io.paymentgateway.paymentmodule.FundTransfer9PSB.DTO.response.FT9PSBAuthenticateResponse;
-import io.paymentgateway.paymentmodule.FundTransfer9PSB.DTO.response.FTAccountEnquiryResponse;
-import io.paymentgateway.paymentmodule.FundTransfer9PSB.DTO.response.FTBalanceEnquiryResponse;
-import io.paymentgateway.paymentmodule.FundTransfer9PSB.DTO.response.FundTransferResponse;
+import io.paymentgateway.paymentmodule.FundTransfer9PSB.DTO.request.*;
+import io.paymentgateway.paymentmodule.FundTransfer9PSB.DTO.response.*;
 import io.paymentgateway.paymentmodule.FundTransfer9PSB.service.FT9PSBService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -121,6 +115,22 @@ public class FT9PSBServiceImpl implements FT9PSBService {
                 .body(request)
                 .retrieve()
                 .body(FTBalanceEnquiryResponse.class);
+
+    }
+
+    @Override
+    public FTGetBankListResponse getbanks(FTGetBankListReq listReq) {
+
+        String credential = "eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJuYW1laWQiOiJUTFhMc0p6QnI0N1ppTnYxRDQ2R084a0E4TktTTW1LWHlnWURlMkdocVhBNW9qTUwzbTNrSzJMdkxZbXd6TWc4TzFYdndHUVU5UDdTTS9ENEtiZkFVbGs3UWpkd2VMVS9YdmpKdjdXVDFBdWZDWm5xRnBSVlVQa3N3dnhqWUF5Y3JwRjQxbDcyVUMvRVpQMEtOei94Q1F1WnVURHNBRVBrOExVOVRjQUpLczg9IiwiaHR0cDovL3NjaGVtYXMueG1sc29hcC5vcmcvd3MvMjAwNS8wNS9pZGVudGl0eS9jbGFpbXMvaGFzaCI6IjYyYWFjY2Q4ZTEzNjEzY2M1NDc4N2RmNzE1NmM5ODgwOGJkYmZmMjI3OTM0MGFiN2E5MjYyYjI4YmI4NGI5YmYxNDM3YTJhNmE1NDYzZmIxOTBiNTQwYjAxZDg1OWM3YmNkMjYzZTE4Yjk2NWEyYmMxMDEyNGRiODk2NWVjZWFhIiwicm9sZSI6IkZpNndtbFBPQXRjVkJqSXArRnRvQjF5cExzdHV1cGtOZTkyWGJEQW9HdjUxUlVYRzVpN1hycUtEL3M3dVBwUmhFamNIaXprVVBOUEI5ckdUcFc0S2dOY1IyQjNSZnFnTG1sbXEvL0hpQ2prWE0rM3BLdGRnKzZDVGhwWGUwazlHeFRZTFRhSTJ1eUVDbzNhbHJsZXBEcjlxTy9kakx2NmN2TkdROHFLeU9xWVU3bXI1Tlg3TWMyR2ZxNXMrQ0I1OThLT29nenY0NEMzR2sxS0F2eDJWeUIvZW1hY0dGanFPclVBUzhjekQxRXpYVm5ZODB1NUxEaFZxKzVrREtGMFdvbGU1U2lyV3Ntc1VzZmk3MmdKQSs0YmhmSnVmcmtKT1NYbkcrNDVGY2d1UVFGOWU2ZDAxWEN6dEFiY21tQWFSM0Fpd3F4NDBYMGpLTDlpbjFoRnl4QT09IiwibmJmIjoxNzE2NDYwODU0LCJleHAiOjE3MTY0NjgwNTQsImlhdCI6MTcxNjQ2MDg1NCwiaXNzIjoiOVBTQl9TZXJ2aWNlX0ludGVybmFsIiwiYXVkIjoiOVBTQl9TZXJ2aWNlX0ludGVybmFsIn0.QRYX2X50gZ6oMvzrvV1Bl0NuoeQPGsYt3h6L7Li6_DXAHlEfpg728Rwyd1m8Rf_NSCwMdgYX8QUiSapkkhHI-Q";
+
+        return this.restClient
+                .post()
+                .uri("https://baastest.9psb.com.ng/ipaymw-api/v1/merchant/account/balanceenquiry")
+                .contentType(MediaType.APPLICATION_JSON)
+                .header(HttpHeaders.AUTHORIZATION, credential)
+                .body(listReq)
+                .retrieve()
+                .body(FTGetBankListResponse.class);
 
     }
 
