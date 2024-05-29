@@ -14,6 +14,7 @@ import org.springframework.web.client.RestClient;
 import java.math.BigInteger;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.time.Instant;
 
 
 @Service
@@ -66,6 +67,10 @@ public class CoralPayUSSDServiceImpl implements CoralPayUSSDService {
                .retrieve()
                .body(CoralPayCConnectAuthenticationResponse.class);
 
+    }
+
+    public static void main(String[] args) {
+        System.out.println(Instant.now().getEpochSecond());
     }
 
 

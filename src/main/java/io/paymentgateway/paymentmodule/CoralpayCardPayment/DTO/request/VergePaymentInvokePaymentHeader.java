@@ -5,12 +5,12 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Data
-@AllArgsConstructor
 @NoArgsConstructor
-public class CoralCardRequest {
+@AllArgsConstructor
+public class VergePaymentInvokePaymentHeader {
 
-    private String username;
-    private String password;
-//    private String terminalId;
+    private String merchantId;
+    private Integer timeStamp;
+    private String signature;
 
 }

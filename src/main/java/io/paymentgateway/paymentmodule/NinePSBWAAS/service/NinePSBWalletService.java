@@ -19,4 +19,6 @@ public interface NinePSBWalletService {
 
     NinePSBUpgradeStatusResponse  upgrade_status(NinePSBUpgradeStatusRequest upgradeRequest) throws PaymentServiceException;
 
+
+
 }

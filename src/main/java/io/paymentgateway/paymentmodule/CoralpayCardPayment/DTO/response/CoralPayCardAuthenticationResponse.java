@@ -5,10 +5,9 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Data
-@AllArgsConstructor
-@NoArgsConstructor
-public class CoralPayCardAutheticationResponse {
+public class CoralPayCardAuthenticationResponse {
 
-
+    private String username;
+    private String password;
 
 }
