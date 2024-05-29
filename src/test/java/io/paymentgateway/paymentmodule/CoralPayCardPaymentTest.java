@@ -70,9 +70,9 @@ public class CoralPayCardPaymentTest {
     }
 
     @Test
-    void checkCoralPayVergePaymentIsNotNull() {
+    void checkCoralPayVergePaymentIsNotNull() throws IllegalArgumentException {
 
-        if(StringUtils.isEmpty(!invokeRequest)) {
+        if(StringUtils.isNotEmpty(String.valueOf(invokeRequest))) {
             VergePaymentInvokePaymentHeader requestHeader = new VergePaymentInvokePaymentHeader();
             requestHeader.setMerchantId("4001686KAB24P01");
             requestHeader.setSignature("22b113804e26ecb95aabace34148e123187dc83599d4a471d1ed664e53662c45");
