@@ -2,8 +2,10 @@ package io.paymentgateway.paymentmodule.CoralpayCardPayment.services.implementat
 
 import io.paymentgateway.paymentmodule.CoralpayCardPayment.DTO.request.CoralCardRequest;
 import io.paymentgateway.paymentmodule.CoralpayCardPayment.DTO.request.VergePaymentInvokePaymentRequest;
+import io.paymentgateway.paymentmodule.CoralpayCardPayment.DTO.request.VergeTransactionQueryRequest;
 import io.paymentgateway.paymentmodule.CoralpayCardPayment.DTO.response.CoralPayCardResponse;
 import io.paymentgateway.paymentmodule.CoralpayCardPayment.DTO.response.VergePaymentInvokePaymentResponse;
+import io.paymentgateway.paymentmodule.CoralpayCardPayment.DTO.response.VergeTransactionQueryResponse;
 import io.paymentgateway.paymentmodule.CoralpayCardPayment.services.CoralPayCardPaymentService;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -59,6 +61,21 @@ public class CoralPayCardPaymentServiceImpl implements CoralPayCardPaymentServic
                 .body(paymentRequest)
                 .retrieve()
                 .body(VergePaymentInvokePaymentResponse.class);
+
+    }
+
+    @Override
+    public VergeTransactionQueryResponse query(VergeTransactionQueryRequest queryRequest) {
+
+        String credential = "eyJhbGciOiJodHRwOi8vd3d3LnczLm9yZy8yMDAxLzA0L3htbGRzaWctbW9yZSNobWFjLXNoYTUxMiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiJjY2JmYjljMC0xN2NiLTQ4MmUtYWIzMi05MzM2MzQzMzQ4MmEiLCJ0eXAiOiJhdCtqd3QiLCJNZXJjaGFudElkIjoiNDAwMTY4NktBQjI0UDAxIiwiZXhwIjoxNzMxNDcyODU2LCJpc3MiOiJodHRwczovL2NvcmFscGF5LmNvbSIsImF1ZCI6Imh0dHBzOi8vY29yYWxwYXkuY29tIn0.H82lf5GAOlDYZLq5avYEF-8cAInU68b0KgVlCl37x3QBzwHI18bwrVqBz4qf0_RrG3RqkoaWplppO-juy6pcXA";
+        return restClient
+                .post()
+                .uri("https://testdev.coralpay.com:5000/GwApi/api/v1/TransactionQuery")
+                .contentType(MediaType.APPLICATION_JSON)
+                .header(HttpHeaders.AUTHORIZATION, credential)
+                .body(queryRequest)
+                .retrieve()
+                .body(VergeTransactionQueryResponse.class);
 
     }
 

@@ -2,9 +2,7 @@ package io.paymentgateway.paymentmodule;
 
 import io.micrometer.common.util.StringUtils;
 import io.paymentgateway.paymentmodule.CoralpayCardPayment.DTO.request.*;
-import io.paymentgateway.paymentmodule.CoralpayCardPayment.DTO.response.CoralPayCardResponse;
-import io.paymentgateway.paymentmodule.CoralpayCardPayment.DTO.response.VergePaymentInvokePaymentResponse;
-import io.paymentgateway.paymentmodule.CoralpayCardPayment.DTO.response.VergePaymentInvokePaymentResponseHeader;
+import io.paymentgateway.paymentmodule.CoralpayCardPayment.DTO.response.*;
 import io.paymentgateway.paymentmodule.CoralpayCardPayment.services.CoralPayCardPaymentService;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
@@ -35,11 +33,20 @@ public class CoralPayCardPaymentTest {
 //    @Autowired
 //    private VergePaymentInvokePaymentHeader requestHeader;
 
+//    @Autowired
+//    private VergeTransactionQueryRequest queryRequest;
+//
+//    @Autowired
+//    private VergeTransactionQueryResponse queryResponse;
+
+
+
     @Autowired
     private static VergePaymentInvokePaymentRequest invokeRequest;
 
     @Autowired
     private static VergePaymentInvokePaymentResponse vergeresponse;
+
     @BeforeEach
     void setUp() {
 
@@ -88,7 +95,6 @@ public class CoralPayCardPaymentTest {
             customer.setPhone("080300000001");
             customer.setTokenUserId("080300000001");
 
-
             invokeRequest.setCustomer(customer);
 
             //Customization Object specified.
@@ -127,6 +133,35 @@ public class CoralPayCardPaymentTest {
     @Test
     void checkSignature() {
         log.info(service.generateSignature("4001686KAB24P01","9900990285", "1716907733","0ab28984-ea4d-4929-8471-90232921131f"));
+
+    }
+
+    @Test
+    void testTransactionQuery() {
+
+        try {
+
+            VergeTransactionQueryRequest queryRequest = new VergeTransactionQueryRequest();
+            VergeTransactionQueryResponse queryResponse = new VergeTransactionQueryResponse();
+
+            VergeTransactionQueryRequestHeader requestHeader = new VergeTransactionQueryRequestHeader();
+            requestHeader.setMerchantId("4001686KAB24P01");
+            requestHeader.setTimeStamp("1717074464");
+            requestHeader.setSignature("ecd64924-2944-4500-b5e0-b63120d1810c");
+
+            queryRequest.setTraceId("9099388491");
+
+            queryRequest.setRequestHeader(requestHeader);
+
+            //Refund refund = new Refund();
+
+            queryResponse = service.query(queryRequest);
+
+            assertThat(queryResponse.getResponseMessage()).isEqualTo("Success");
+        } catch(Exception e) {
+            e.getLocalizedMessage();
+            throw new NullPointerException("Class file is empty");
+        }
 
     }
 
