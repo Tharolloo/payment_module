@@ -2,7 +2,7 @@ package io.paymentgateway.paymentmodule.CoralpayCardPayment.DTO.response;
 import lombok.Data;
 
 @Data
-public class Refund {
+public class Refunds {
 
     private String refundId;
     private String amount;

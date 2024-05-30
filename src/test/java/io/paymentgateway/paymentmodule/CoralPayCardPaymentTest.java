@@ -139,31 +139,24 @@ public class CoralPayCardPaymentTest {
     @Test
     void testTransactionQuery() {
 
-        try {
+//        try {
 
             VergeTransactionQueryRequest queryRequest = new VergeTransactionQueryRequest();
-            VergeTransactionQueryResponse queryResponse = new VergeTransactionQueryResponse();
 
             VergeTransactionQueryRequestHeader requestHeader = new VergeTransactionQueryRequestHeader();
             requestHeader.setMerchantId("4001686KAB24P01");
-            requestHeader.setTimeStamp("1717074464");
-            requestHeader.setSignature("ecd64924-2944-4500-b5e0-b63120d1810c");
-
+            requestHeader.setTimeStamp("1717092502");
+            requestHeader.setSignature("a53110d56426caafce69eb3e24fcbfcda682722d88d8a143fdb9c07f78b714b4");
+            queryRequest.setRequestHeader(requestHeader);
             queryRequest.setTraceId("9099388491");
 
-            queryRequest.setRequestHeader(requestHeader);
-
-            //Refund refund = new Refund();
-
-            queryResponse = service.query(queryRequest);
-
+            VergeTransactionQueryResponse queryResponse = service.query(queryRequest);
+            log.info(queryResponse.toString());
             assertThat(queryResponse.getResponseMessage()).isEqualTo("Success");
-        } catch(Exception e) {
-            e.getLocalizedMessage();
-            throw new NullPointerException("Class file is empty");
         }
+//        catch(Exception e) {
+            //e.getLocalizedMessage();
+//            throw new NullPointerException("Class file is empty");
+//        }
 
     }
-
-
-}
