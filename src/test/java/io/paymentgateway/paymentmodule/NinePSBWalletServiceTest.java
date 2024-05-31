@@ -13,7 +13,9 @@ import org.junit.jupiter.api.Test;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.web.multipart.MultipartFile;
 
+import static io.paymentgateway.paymentmodule.NinePSBWAAS.service.NinePSBWalletService.photoFunction;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.Assert.*;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
@@ -162,10 +164,35 @@ public class NinePSBWalletServiceTest {
 
     }
 
-    @Test
-    void confirmWalletUpgradeIsNotNull() {
+//    @Test
+//    void confirmWalletUpgradeIsNotNull() {
+//
+//        // NinePSBWalletUpgradeResponse response = new NinePSBWalletUpgradeResponse();
+//        NinePSBWalletUpgradeRequest request = new NinePSBWalletUpgradeRequest();
+//
+//        String photoUrl = photoFunction.apply();
+//
+//
+//    }
 
-        // NinePSBWalletUpgradeResponse response = new NinePSBWalletUpgradeResponse();
+//    public String uploadPhoto(String id, MultipartFile file){
+//        String photoUrl = photoFunction.apply(id, file);
+//        NinePSBWalletUpgradeRequest request = new NinePSBWalletUpgradeRequest();
+//        request.setUserPhoto(photoUrl);
+//        return photoUrl;
+//    }
+
+    @Test
+    void checkWalletTransactionHistory() {
+
+        WalletTransactionHistoryRequest request = WalletTransactionHistoryRequest
+                .builder()
+                .accountNumber("1100025756")
+                .fromDate("2024-01-02")
+                .toDate("2024-02-02")
+                .build();
+
+        WalletTransactionHistoryResponse response = ninePSBWalletService
 
 
 
