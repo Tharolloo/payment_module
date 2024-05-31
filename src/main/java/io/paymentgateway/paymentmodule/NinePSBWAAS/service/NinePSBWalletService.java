@@ -23,10 +23,12 @@ public interface NinePSBWalletService {
 
     NinePSBUpgradeStatusResponse  upgrade_status(NinePSBUpgradeStatusRequest upgradeRequest);
 
-    NinePSBWalletUpgradeResponse wallet_upgrade(NinePSBWalletUpgradeRequest upgradeRequest);
+    //NinePSBWalletUpgradeResponse wallet_upgrade(NinePSBWalletUpgradeRequest upgradeRequest);
 
     Function<String,String> fileExtension = null;
 
     BiFunction<String, MultipartFile, String> photoFunction = null;
+
+    WalletTransactionHistoryResponse wallet_transaction(WalletTransactionHistoryRequest request);
 
 }

@@ -21,7 +21,6 @@ import static org.junit.Assert.*;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 @Slf4j
-@Builder
 @SpringBootTest
 public class NinePSBWalletServiceTest {
 
@@ -190,10 +189,13 @@ public class NinePSBWalletServiceTest {
                 .accountNumber("1100025756")
                 .fromDate("2024-01-02")
                 .toDate("2024-02-02")
+                .numberOfItems("10")
                 .build();
 
-        WalletTransactionHistoryResponse response = ninePSBWalletService
+        WalletTransactionHistoryResponse response = ninePSBWalletService.wallet_transaction(request);
+        log.info(response.toString());
 
+        assertThat(response.getStatus()).isEqualTo("Success");
 
 
     }

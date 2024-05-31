@@ -3,6 +3,7 @@ package io.paymentgateway.paymentmodule.NinePSBWAAS.service;
 import io.paymentgateway.paymentmodule.NinePSBWAAS.DTO.request.*;
 import io.paymentgateway.paymentmodule.NinePSBWAAS.DTO.response.*;
 import io.paymentgateway.paymentmodule.exceptions.PaymentServiceException;
+import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
@@ -24,6 +25,7 @@ import static io.paymentgateway.paymentmodule.NinePSBWAAS.utils.Constant.PHOTO_D
 import static java.nio.file.StandardCopyOption.REPLACE_EXISTING;
 
 @Service
+@AllArgsConstructor
 @Slf4j
 public class NinePSBWalletSeviceImpl implements NinePSBWalletService {
 
@@ -110,19 +112,35 @@ String cred = "eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICJ0ek1WWmtzOG1zc
                 .body(NinePSBUpgradeStatusResponse.class);
     }
 
+//    @Override
+//    public NinePSBWalletUpgradeResponse wallet_upgrade(NinePSBWalletUpgradeRequest upgradeRequest) {
+//
+//        String cred = "eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICJ0ek1WWmtzOG1zcG01TmNHazNFdW1BVjZWYTFRQTVpTlYwcHVfU3hZQldBIn0.eyJleHAiOjE3MTcxNDg3NjEsImlhdCI6MTcxNzE0MTU2MSwianRpIjoiNzkwNmQzZTYtMDNjYy00NTFiLTg4OWEtNjExOWExM2UyMGE5IiwiaXNzIjoiaHR0cDovLzEwLjE4NS4yMjMuMjM6ODA4MC9yZWFsbXMvOXBzYiIsImF1ZCI6ImFjY291bnQiLCJzdWIiOiJiOGMyYjczMy1lMzIwLTQyM2EtOGVhNi02ZDBkNTBmNmRlYzEiLCJ0eXAiOiJCZWFyZXIiLCJhenAiOiJ3YWFzIiwic2Vzc2lvbl9zdGF0ZSI6IjQ1ZDk5MzkyLTYzZjItNDUwZS04NGExLTkyYTNjYWI5ZThmMyIsImFjciI6IjEiLCJyZWFsbV9hY2Nlc3MiOnsicm9sZXMiOlsibm90aWZpY2F0aW9uX3JlcXVlcnkiLCJkZWZhdWx0LXJvbGVzLTlwc2IiLCJ3YWxsZXRfdXBncmFkZV9maWxlX3VwbG9hZCIsImNyZWRpdF93YWxsZXQiLCJ3YWxsZXRfcmVxdWVyeSIsIndhbGxldF9zdGF0dXMiLCJkZWJpdF93YWxsZXQiLCJlZGl0X3dhYXNfYWNjIiwid2FsbGV0X3RyYW5zYWN0aW9ucyIsIndhbGxldF9lbnF1aXJ5Iiwib3RoZXJfYmFua3NfZW5xdWlyeSIsImdldF9iYW5rcyIsInVwZ3JhZGVfc3RhdHVzIiwiZ2V0X2FjY291bnRfbnVtYmVyIiwiZ2V0X3JlcXVlc3Rfc3RhdHVzIiwib2ZmbGluZV9hY2Nlc3MiLCJvcGVuX3dhbGxldCIsIndhbGxldF91cGdyYWRlIiwib3Blbl9jb3Jwb3JhdGVfYWNjb3VudCIsInVtYV9hdXRob3JpemF0aW9uIiwiZ2V0X3dhbGxldCIsIm9wZW5fY29ycG9yYXRlX2FjY291bnRfZmlsZV91cGxvYWQiLCJjaGFuZ2Vfd2FsbGV0X3N0YXR1cyIsIndhbGxldF9vdGhlcl9iYW5rcyJdfSwicmVzb3VyY2VfYWNjZXNzIjp7ImFjY291bnQiOnsicm9sZXMiOlsibWFuYWdlLWFjY291bnQiLCJtYW5hZ2UtYWNjb3VudC1saW5rcyIsInZpZXctcHJvZmlsZSJdfX0sInNjb3BlIjoib3BlbmlkIGVtYWlsIHByb2ZpbGUiLCJzaWQiOiI0NWQ5OTM5Mi02M2YyLTQ1MGUtODRhMS05MmEzY2FiOWU4ZjMiLCJlbWFpbF92ZXJpZmllZCI6ZmFsc2UsInByZWZlcnJlZF91c2VybmFtZSI6ImthcnJhYm8ifQ.cOMaqNEFjhTjTSs9BG_cbps6S6jmTismd4jArj4LFFchaS5NhDy0AYzedASuPGjkSXpfrEx4d-CU9skm_t8HS0ZITCbC2sOu5JgWN63tj1dSdehkmgp15sk9-e2xeWjr1RXF2RNauJzfwjoEm7NHK8cAL5_KCIagqVwd4nCf8GHOd6YWvQpYRgVhzIpPgNZFzGRw3fPpPUCCReJrGLcO8YRFO-y7aUGUwCKTpBUYOrrPkfwRTzlqX7U29r_pULLN0IoxTE9ZUw40hk3VSc3cvN1NQdbTKFavTqJ3KM1XE9ZQ2FwfROjRN8gpTj1Ohc6qF1UiU5XusKeaWSGufAntgQ";
+//
+//                return this.restClient
+//                .post()
+//                .uri("http://102.216.128.75:9090/waas/api/v1/wallet_upgrade")
+//                .contentType(MediaType.APPLICATION_JSON)
+//                .header(HttpHeaders.AUTHORIZATION,"Bearer "+ cred)
+//                .body(upgradeRequest)
+//                .retrieve()
+//                .body(NinePSBWalletUpgradeResponse.class);
+//
+//    }
+
     @Override
-    public NinePSBWalletUpgradeResponse wallet_upgrade(NinePSBWalletUpgradeRequest upgradeRequest) {
+    public WalletTransactionHistoryResponse wallet_transaction(WalletTransactionHistoryRequest request) {
 
-        String cred = "eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICJ0ek1WWmtzOG1zcG01TmNHazNFdW1BVjZWYTFRQTVpTlYwcHVfU3hZQldBIn0.eyJleHAiOjE3MTcxNDg3NjEsImlhdCI6MTcxNzE0MTU2MSwianRpIjoiNzkwNmQzZTYtMDNjYy00NTFiLTg4OWEtNjExOWExM2UyMGE5IiwiaXNzIjoiaHR0cDovLzEwLjE4NS4yMjMuMjM6ODA4MC9yZWFsbXMvOXBzYiIsImF1ZCI6ImFjY291bnQiLCJzdWIiOiJiOGMyYjczMy1lMzIwLTQyM2EtOGVhNi02ZDBkNTBmNmRlYzEiLCJ0eXAiOiJCZWFyZXIiLCJhenAiOiJ3YWFzIiwic2Vzc2lvbl9zdGF0ZSI6IjQ1ZDk5MzkyLTYzZjItNDUwZS04NGExLTkyYTNjYWI5ZThmMyIsImFjciI6IjEiLCJyZWFsbV9hY2Nlc3MiOnsicm9sZXMiOlsibm90aWZpY2F0aW9uX3JlcXVlcnkiLCJkZWZhdWx0LXJvbGVzLTlwc2IiLCJ3YWxsZXRfdXBncmFkZV9maWxlX3VwbG9hZCIsImNyZWRpdF93YWxsZXQiLCJ3YWxsZXRfcmVxdWVyeSIsIndhbGxldF9zdGF0dXMiLCJkZWJpdF93YWxsZXQiLCJlZGl0X3dhYXNfYWNjIiwid2FsbGV0X3RyYW5zYWN0aW9ucyIsIndhbGxldF9lbnF1aXJ5Iiwib3RoZXJfYmFua3NfZW5xdWlyeSIsImdldF9iYW5rcyIsInVwZ3JhZGVfc3RhdHVzIiwiZ2V0X2FjY291bnRfbnVtYmVyIiwiZ2V0X3JlcXVlc3Rfc3RhdHVzIiwib2ZmbGluZV9hY2Nlc3MiLCJvcGVuX3dhbGxldCIsIndhbGxldF91cGdyYWRlIiwib3Blbl9jb3Jwb3JhdGVfYWNjb3VudCIsInVtYV9hdXRob3JpemF0aW9uIiwiZ2V0X3dhbGxldCIsIm9wZW5fY29ycG9yYXRlX2FjY291bnRfZmlsZV91cGxvYWQiLCJjaGFuZ2Vfd2FsbGV0X3N0YXR1cyIsIndhbGxldF9vdGhlcl9iYW5rcyJdfSwicmVzb3VyY2VfYWNjZXNzIjp7ImFjY291bnQiOnsicm9sZXMiOlsibWFuYWdlLWFjY291bnQiLCJtYW5hZ2UtYWNjb3VudC1saW5rcyIsInZpZXctcHJvZmlsZSJdfX0sInNjb3BlIjoib3BlbmlkIGVtYWlsIHByb2ZpbGUiLCJzaWQiOiI0NWQ5OTM5Mi02M2YyLTQ1MGUtODRhMS05MmEzY2FiOWU4ZjMiLCJlbWFpbF92ZXJpZmllZCI6ZmFsc2UsInByZWZlcnJlZF91c2VybmFtZSI6ImthcnJhYm8ifQ.cOMaqNEFjhTjTSs9BG_cbps6S6jmTismd4jArj4LFFchaS5NhDy0AYzedASuPGjkSXpfrEx4d-CU9skm_t8HS0ZITCbC2sOu5JgWN63tj1dSdehkmgp15sk9-e2xeWjr1RXF2RNauJzfwjoEm7NHK8cAL5_KCIagqVwd4nCf8GHOd6YWvQpYRgVhzIpPgNZFzGRw3fPpPUCCReJrGLcO8YRFO-y7aUGUwCKTpBUYOrrPkfwRTzlqX7U29r_pULLN0IoxTE9ZUw40hk3VSc3cvN1NQdbTKFavTqJ3KM1XE9ZQ2FwfROjRN8gpTj1Ohc6qF1UiU5XusKeaWSGufAntgQ";
+        String cred = "eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICJ0ek1WWmtzOG1zcG01TmNHazNFdW1BVjZWYTFRQTVpTlYwcHVfU3hZQldBIn0.eyJleHAiOjE3MTcxNjczMzcsImlhdCI6MTcxNzE2MDEzNywianRpIjoiNGQ3OTdkNmEtZDZlOS00MGE0LTkyZDctYzhlM2VhNTg0ZjkxIiwiaXNzIjoiaHR0cDovLzEwLjE4NS4yMjMuMjM6ODA4MC9yZWFsbXMvOXBzYiIsImF1ZCI6ImFjY291bnQiLCJzdWIiOiJiOGMyYjczMy1lMzIwLTQyM2EtOGVhNi02ZDBkNTBmNmRlYzEiLCJ0eXAiOiJCZWFyZXIiLCJhenAiOiJ3YWFzIiwic2Vzc2lvbl9zdGF0ZSI6Ijg1NmFjNzNlLTc0MDItNGU4MS04ZmVjLWY1NDdlOWU3MjU3YSIsImFjciI6IjEiLCJyZWFsbV9hY2Nlc3MiOnsicm9sZXMiOlsibm90aWZpY2F0aW9uX3JlcXVlcnkiLCJkZWZhdWx0LXJvbGVzLTlwc2IiLCJ3YWxsZXRfdXBncmFkZV9maWxlX3VwbG9hZCIsImNyZWRpdF93YWxsZXQiLCJ3YWxsZXRfcmVxdWVyeSIsIndhbGxldF9zdGF0dXMiLCJkZWJpdF93YWxsZXQiLCJlZGl0X3dhYXNfYWNjIiwid2FsbGV0X3RyYW5zYWN0aW9ucyIsIndhbGxldF9lbnF1aXJ5Iiwib3RoZXJfYmFua3NfZW5xdWlyeSIsImdldF9iYW5rcyIsInVwZ3JhZGVfc3RhdHVzIiwiZ2V0X2FjY291bnRfbnVtYmVyIiwiZ2V0X3JlcXVlc3Rfc3RhdHVzIiwib2ZmbGluZV9hY2Nlc3MiLCJvcGVuX3dhbGxldCIsIndhbGxldF91cGdyYWRlIiwib3Blbl9jb3Jwb3JhdGVfYWNjb3VudCIsInVtYV9hdXRob3JpemF0aW9uIiwiZ2V0X3dhbGxldCIsIm9wZW5fY29ycG9yYXRlX2FjY291bnRfZmlsZV91cGxvYWQiLCJjaGFuZ2Vfd2FsbGV0X3N0YXR1cyIsIndhbGxldF9vdGhlcl9iYW5rcyJdfSwicmVzb3VyY2VfYWNjZXNzIjp7ImFjY291bnQiOnsicm9sZXMiOlsibWFuYWdlLWFjY291bnQiLCJtYW5hZ2UtYWNjb3VudC1saW5rcyIsInZpZXctcHJvZmlsZSJdfX0sInNjb3BlIjoib3BlbmlkIGVtYWlsIHByb2ZpbGUiLCJzaWQiOiI4NTZhYzczZS03NDAyLTRlODEtOGZlYy1mNTQ3ZTllNzI1N2EiLCJlbWFpbF92ZXJpZmllZCI6ZmFsc2UsInByZWZlcnJlZF91c2VybmFtZSI6ImthcnJhYm8ifQ.Q0aTZDzHN9PVCENtwTxIV01H0KtnAZ5xEPj2YgElOUNCLbCWUXNqzt5fkvr9QaBXdWRLJeaXXshiF-NurYOe7Tk1jqXkY1kJ9QvnE8FtHe9tXw1_fnO88fGXHcIyCMdyRBYYTSdef9hYWdu0WdqvOQTdCeM6SQOxZPd0CmxVtdqalAxrp2jC0xDTFD9uG3IDzdfUzCbiwLVl8Z8_BZup66yqzjEGRD-gjRv-0JysLX0VRC6J1VZcAk7kKy0XTF6hijbKZX_i4AoPgJc5pAgLE65W6NNsNMGlKTQ_w_TvhaKtuMhja1-vrcQbW1Yt1DL9E2vwe-goQzHiAp_trpIj7A";
 
-                return this.restClient
+            return this.restClient
                 .post()
-                .uri("http://102.216.128.75:9090/waas/api/v1/wallet_upgrade")
+                .uri("http://102.216.128.75:9090/waas/api/v1/wallet_transactions")
                 .contentType(MediaType.APPLICATION_JSON)
                 .header(HttpHeaders.AUTHORIZATION,"Bearer "+ cred)
-                .body(upgradeRequest)
+                .body(request)
                 .retrieve()
-                .body(NinePSBWalletUpgradeResponse.class);
+                .body(WalletTransactionHistoryResponse.class);
 
     }
 
@@ -142,6 +160,7 @@ String cred = "eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICJ0ek1WWmtzOG1zc
             throw new RuntimeException("Unable to save image");
         }
     };
+
 
 
 }
