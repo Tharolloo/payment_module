@@ -145,18 +145,20 @@ public class CoralPayCardPaymentTest {
 
             VergeTransactionQueryRequestHeader requestHeader = new VergeTransactionQueryRequestHeader();
             requestHeader.setMerchantId("4001686KAB24P01");
-            requestHeader.setTimeStamp("1717092502");
-            requestHeader.setSignature("a53110d56426caafce69eb3e24fcbfcda682722d88d8a143fdb9c07f78b714b4");
+            requestHeader.setTimeStamp("1717094744");
+            requestHeader.setSignature("d51917f403e359fbf0cff9a97311b5271af0b6ee211fd5ded8a10d67c01e8b76");
             queryRequest.setRequestHeader(requestHeader);
             queryRequest.setTraceId("9099388491");
 
             VergeTransactionQueryResponse queryResponse = service.query(queryRequest);
             log.info(queryResponse.toString());
             assertThat(queryResponse.getResponseMessage()).isEqualTo("Success");
+
         }
 //        catch(Exception e) {
             //e.getLocalizedMessage();
 //            throw new NullPointerException("Class file is empty");
 //        }
+
 
     }

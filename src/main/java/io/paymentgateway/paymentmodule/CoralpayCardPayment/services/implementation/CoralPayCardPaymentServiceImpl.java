@@ -67,11 +67,13 @@ public class CoralPayCardPaymentServiceImpl implements CoralPayCardPaymentServic
     @Override
     public VergeTransactionQueryResponse query(VergeTransactionQueryRequest queryRequest) {
 
-        String credential = "eyJhbGciOiJodHRwOi8vd3d3LnczLm9yZy8yMDAxLzA0L3htbGRzaWctbW9yZSNobWFjLXNoYTUxMiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiI3MmNkZTc4Ni03ZWI5LTRhNGEtYWUwYS1hZmI0MmUzNmM2MDkiLCJ0eXAiOiJhdCtqd3QiLCJNZXJjaGFudElkIjoiNDAwMTY4NktBQjI0UDAxIiwiZXhwIjoxNzMxNDkxNzIxLCJpc3MiOiJodHRwczovL2NvcmFscGF5LmNvbSIsImF1ZCI6Imh0dHBzOi8vY29yYWxwYXkuY29tIn0.SD7kkv_SH1sxmNz3urBZts9Hhw-X-eMVzKbR0rq4irgwgs7lCk-AcEx8YqC_4REYy_6kOofy2ghmV5j0OWTvOg";        return restClient
+String credential = "eyJhbGciOiJodHRwOi8vd3d3LnczLm9yZy8yMDAxLzA0L3htbGRzaWctbW9yZSNobWFjLXNoYTUxMiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiIxMThiNTA2YS1iZTQ1LTQ1ODQtYjM2ZS0wYzhlNTUzMjI4NjEiLCJ0eXAiOiJhdCtqd3QiLCJNZXJjaGFudElkIjoiNDAwMTY4NktBQjI0UDAxIiwiZXhwIjoxNzMxNDk0Nzc3LCJpc3MiOiJodHRwczovL2NvcmFscGF5LmNvbSIsImF1ZCI6Imh0dHBzOi8vY29yYWxwYXkuY29tIn0.PLbieK3n7wZdP8rAxT3DT83JVS1wg85aSudKbwf_gBwTjqXWZh5_9pF8vHWppxqN6ALnHws9rRlyI2vEzO9fKQ";
+
+        return restClient
                 .post()
                 .uri("https://testdev.coralpay.com:5000/GwApi/api/v1/TransactionQuery")
                 .contentType(MediaType.APPLICATION_JSON)
-                .header(HttpHeaders.AUTHORIZATION,"eyJhbGciOiJodHRwOi8vd3d3LnczLm9yZy8yMDAxLzA0L3htbGRzaWctbW9yZSNobWFjLXNoYTUxMiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiJhYzc5Mjk5Zi03YmIxLTRkODctOTg5Zi1jMjVmMTY2MmUzMTgiLCJ0eXAiOiJhdCtqd3QiLCJNZXJjaGFudElkIjoiNDAwMTY4NktBQjI0UDAxIiwiZXhwIjoxNzMxNDkyNDQ3LCJpc3MiOiJodHRwczovL2NvcmFscGF5LmNvbSIsImF1ZCI6Imh0dHBzOi8vY29yYWxwYXkuY29tIn0.4hQ3H6B7ZKVn8YuswBnjxLA-5xr-Jz65wqkFu_8xNhG5puG7jdo61D-dh2K7gjuYMf30wKIkGukzQIK8AVev7g")
+                .header(HttpHeaders.AUTHORIZATION,"Bearer " + credential)
                 .body(queryRequest)
                 .retrieve()
                 .body(VergeTransactionQueryResponse.class);

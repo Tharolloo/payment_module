@@ -9,6 +9,6 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class NinePSBUpgradeStatusRequest {
 
-    private String accountNo;
+    private String accountNumber;
 
 }

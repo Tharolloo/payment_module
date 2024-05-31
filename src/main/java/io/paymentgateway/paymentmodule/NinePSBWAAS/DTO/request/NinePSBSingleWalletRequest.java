@@ -16,6 +16,6 @@ public class NinePSBSingleWalletRequest {
     private String transactionId;
     private String narration;
     private Merchant merchant;
-    private TransactionType transactionType;
+    private String transactionType;
 
 }

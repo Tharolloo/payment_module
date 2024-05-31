@@ -6,19 +6,19 @@ import io.paymentgateway.paymentmodule.exceptions.PaymentServiceException;
 
 public interface NinePSBWalletService {
 
-    NinePSBAuthenticateResponse authenticate(NinePSBAuthenticateRequest authRequest) throws PaymentServiceException;
+    NinePSBAuthenticateResponse authenticate(NinePSBAuthenticateRequest authRequest);
 
 
-    NinePSBOpenWalletResponse openWallet(NinePSBOpenWalletRequest openWalletRequest) throws PaymentServiceException;
+    NinePSBOpenWalletResponse openWallet(NinePSBOpenWalletRequest openWalletRequest);
 
-    NinePSBWalletEnquiryResponse walletEnquiry(NinePSBWalletEnquiryRequest enquiryRequest) throws PaymentServiceException;
+    NinePSBWalletEnquiryResponse walletEnquiry(NinePSBWalletEnquiryRequest enquiryRequest);
 
-    NinePSBSingleWalletResponse debit_transfer(NinePSBSingleWalletRequest walletRequest) throws PaymentServiceException;
+    NinePSBSingleWalletResponse debit_transfer(NinePSBSingleWalletRequest walletRequest);
 
-    NinePSBSingleWalletResponse credit_transfer(NinePSBSingleWalletRequest singlecreditRequest) throws PaymentServiceException;
+    NinePSBSingleWalletResponse credit_transfer(NinePSBSingleWalletRequest singlecreditRequest);
 
-    NinePSBUpgradeStatusResponse  upgrade_status(NinePSBUpgradeStatusRequest upgradeRequest) throws PaymentServiceException;
+    NinePSBUpgradeStatusResponse  upgrade_status(NinePSBUpgradeStatusRequest upgradeRequest);
 
-
+    NinePSBWalletUpgradeResponse wallet_upgrade(NinePSBWalletUpgradeRequest upgradeRequest);
 
 }

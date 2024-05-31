@@ -8,7 +8,6 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class NinePSBSingleWalletResponse {
-
     private String message;
     private String status;
     private String data;
